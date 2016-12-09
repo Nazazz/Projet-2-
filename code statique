@@ -8,18 +8,25 @@ void historique statique(int randomImage)
 ouvre le fichier d'historique ecrit
 dedans : le nom du fichier image et le temps
 }
-void ouverture fichier, lecture et affichage(int chiffre)
+void ouverture, lecture et insertion(int numero fichier, table²) // table² = tableau à double entrée
 {
 ouvre le fichier PBM
 lit le fichier
-utilise la fonction affichage pour afficher le terminal
+insertion des valeurs dans une table à double entrée
 }
-void affichage(char caaractere)
+
+void placement(int numero fichier, table², tableau d'affichage)
 {
-affiche dans le terminal en fonction du caratere avec la table ASCII
+insert les données du table² dans le tableau d'affichage à partir d'une case spécifique
 }
+
+void affichage(tableau d'affichage)
+{
+affiche les données du tableau d'affichage dans le terminal
+}
+
 void sortie statique
 {
-si l'utilisateur touche une touche
-sortie du programme
+Si l'utilisateur touche une touche alors kill processus père (lanceur)
+return au shell
 }
