@@ -1,0 +1,37 @@
+int random_ Taille ()
+{
+  choisi un chiffre entre 1 à 3
+  return chiffre
+}
+
+void historique dynamique (int random taille)
+{
+  ouvre le fichier d'historique
+  écrire dedans la taille d'affichage, le temps
+}
+
+void ouverture , lecture et insertion du fichier (int numéro fichier, table table)
+{
+  ouvre le fichier pbm
+  lit le fichier
+
+  insertion des valeurs dans une table à double entrée)
+
+
+Modifiacation de la taille (RANDOM taille)
+(Variable d'environnement)
+
+void Placement (random taille, table tablex2)
+{
+  placement des chiffres dans le grand tableau en fonction du temps
+}
+
+void affichage Tableau d'affichage (tableau d'affichage)
+{
+  afficher le tableau d'affichage dans le terminal
+}
+
+void afficher message ()
+{
+  affiche la phrase et gère les petits points
+}
