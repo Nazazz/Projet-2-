@@ -22,7 +22,7 @@ insert les données du table² dans le tableau d'affichage à partir d'une case 
 
 void affichage(tableau d'affichage)
 {
-affiche les données du tableau d'affichage dans le terminal
+affiche les données du tableau d'affichage dans le terminal avec le language ASCII
 }
 
 void sortie statique
