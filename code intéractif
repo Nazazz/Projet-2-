@@ -1,0 +1,27 @@
+int random_direction ()
+{
+  la façon dont l'avion va apparaître
+  return random direction
+}
+
+void historiqueintéractif (int random direction)
+{
+  ouvre le fichier de l'historique
+  ecrire dedans dans quelle direction part l'avion + le temps
+  ferme le fichier
+}
+
+void ouverture, lecture, insertion, table double entrée)
+{
+  ouvre le fichier PBM
+  lit le fichier PBM
+  insert les données du fichier dans la table
+  ferme le fichier
+}
+
+void insertion (table à double entrée, tableau d'affichage)
+{
+  insert les données dans le tableau à partir d'une case
+}
+
+void déplacement (tableau d'affichage)
