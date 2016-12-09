@@ -1,0 +1,25 @@
+int randomImage()
+{
+choisir un chiffre entre x et y;
+return chiffre;
+}
+void historique statique(int randomImage)
+{
+ouvre le fichier d'historique ecrit
+dedans : le nom du fichier image et le temps
+}
+void ouverture fichier, lecture et affichage(int chiffre)
+{
+ouvre le fichier PBM
+lit le fichier
+utilise la fonction affichage pour afficher le terminal
+}
+void affichage(char caaractere)
+{
+affiche dans le terminal en fonction du caratere avec la table ASCII
+}
+void sortie statique
+{
+si l'utilisateur touche une touche
+sortie du programme
+}
