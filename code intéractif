@@ -24,4 +24,28 @@ void insertion (table à double entrée, tableau d'affichage)
   insert les données dans le tableau à partir d'une case
 }
 
-void déplacement (tableau d'affichage)
+void deplacement haut (tableau d'affichage)
+{
+  deplace toutes les valeurs du tableau vers le haut (une ligne)
+}
+
+void deplacement bas (tableau d'affichage)
+{
+deplace toutes les valeurs du tableau vers le bas (une ligne)
+}
+
+void deplacement gauche (tableau d'affichage)
+{
+deplace toutes les valeurs du tableau vers la gauche (une ligne)
+}
+
+void deplacement droite (tableau d'affichage)
+{
+deplace toutes les valeurs du tableau vers la droite (une ligne)
+}
+void affichage (tableau d'affichage)
+{
+affiche les données du tableau
+}
+
+
