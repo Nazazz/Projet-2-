@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+
+
+
+
+int main(int argc, char *argv[])
+
+{
+  char stat[] = "-stat"; // declare la chaine de caractere -stat pour comparer a l argument entrer 
+
+
+
+
+       if (argc == 1) { //si il n y a pas d'arguments
+
+       system("clear"); //vide le terminal
+       printf("Le programme n'a reçu aucun argument\n");
+
+       }
+       else if (strcmp(argv[1], stat) != 0) // si l argument n est pas -stat 
+       {
+         printf("mauvais argument \n");
+
+       }
+
+       else if (strcmp(argv[1], stat) == 0) // si l argument est stat 
+       {
+
+
+           system("clear");
+           printf(":stat \n");
+           printf("             date       type      description      \n");
+
+
+       }
+
+    return EXIT_SUCCESS;
+
+
+}
