@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
                         printf("%s", chaine) // permet d'affichier la chaîne
 
                 fclose(fichier);
-//     }
+                }
 
 
 return 0;
