@@ -83,12 +83,12 @@ int main(int argc, char *argv[])
 
          while (caractereActuel != EOF )
          {
-           while (caractereActuel != '\n')
+           if (caractereActuel == '\n')
            {
-             caractereActuel = fgetc(fichier);
+             i++;
            }
 
-           i++;
+           caractereActuel = fgetc(fichier);
          }
 
 
@@ -102,38 +102,94 @@ int main(int argc, char *argv[])
                case 1:
 
                     //fichier = fopen("historique.txt", "r");
+                    system("clear");
                      printf(">>>>>Voici les statistiques pour l'ecran statique<<<<<\n\n\n\n");
-                     printf("date       heure      fichier ouvert\n");
+                     printf("date       heure      fichier ouvert\n\n\n");
 
-                     /*
+                     fichier = fopen("historique.txt", "r+");
 
                      if (fichier != NULL)
 
                      {
 
-                      while(i)
+                      while(i > 0)
                       {
                        fscanf(fichier, "%s %s %d %d", &date , &heure, &type, &type2);
 
-                       if (type = 1)
+                       if (type == 1)
                        {
                         printf("%s %s   %d\n", date, heure, type2);
 
                        }
 
+                       i--;
                      }
 
 
                         fclose(fichier);//permet de fermer le dossier grâce à la fonction fclose
 
-                     } */
+                     }
 
                      break;
+
                case 2:
-                     printf("Voici les statistiques pour l'ecran dynamique\n");
+                      system("clear");
+                     printf("Voici les statistiques pour l'ecran dynamique\n\n\n\n");
+                     printf("date       heure      taille de l horloge\n\n\n");
+
+                     fichier = fopen("historique.txt", "r+");
+
+                     if (fichier != NULL)
+
+                     {
+
+                      while(i > 0)
+                      {
+                       fscanf(fichier, "%s %s %d %d", &date , &heure, &type, &type2);
+
+                       if (type == 2)
+                       {
+                        printf("%s %s   %d\n", date, heure, type2);
+
+                       }
+
+                       i--;
+                     }
+
+
+                        fclose(fichier);//permet de fermer le dossier grâce à la fonction fclose
+
+                     }
+
                      break;
                case 3:
-                     printf("Voici les statistiques pour l'ecran interactif\n");
+                      system("clear");
+                     printf("Voici les statistiques pour l'ecran interactif\n\n\n\n");
+                     printf("date       heure      direction de l avion\n\n\n");
+
+                     fichier = fopen("historique.txt", "r+");
+
+                     if (fichier != NULL)
+
+                     {
+
+                      while(i > 0)
+                      {
+                       fscanf(fichier, "%s %s %d %d", &date , &heure, &type, &type2);
+
+                       if (type == 3)
+                       {
+                        printf("%s %s   %d\n", date, heure, type2);
+
+                       }
+
+                       i--;
+                     }
+
+
+                        fclose(fichier);//permet de fermer le dossier grâce à la fonction fclose
+
+                     }
            break;
 
                 case 4:
