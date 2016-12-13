@@ -3,6 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
+#include <sys/wait.h>
 
 #include "fonction.h"
 
@@ -24,6 +25,7 @@ int main(int argc, char *argv[])
   char heure[]= "HH:MM:SS" ;
   int i = 0;
   char caractereActuel = 'a';
+  int pid;
 
 
 
@@ -36,28 +38,54 @@ int main(int argc, char *argv[])
   FILE* fichier = NULL; //le pointeur est initié a NULL car nous n'avons pas de valeur à lui donner.
 
 
+
+  randomChiffre = 1;
+
+
        if (argc == 1) { //si il n y a pas d'arguments
 
        system("clear"); //vide le terminal
-       printf("Le programme n'a reçu aucun argument\n");
 
-       printf("%d\n", randomChiffre);
+       fichier = fopen("historique.txt", "a+"); //nous demandons au fichier text.txt de s'ouvrir.
+
+       if (fichier != NULL)
+       {
+
+             fprintf(fichier,"\n%s %d", s_now, randomChiffre);//ecrit le resultat dans le dossier text.txt
 
 
 
+       }
 
-        fichier = fopen("historique.txt", "a+"); //nous demandons au fichier text.txt de s'ouvrir.
+       fclose(fichier);//permet de fermer le dossier grâce à la fonction fclose
 
-        if (fichier != NULL)
+
+       if (randomChiffre == 1)
+       {
+         pid = fork();
+
+switch(pid)
+
         {
+        case -1:
+                  printf("erreur");
+                  break;
 
-              fprintf(fichier,"\n%s %d", s_now, randomChiffre);//ecrit le resultat dans le dossier text.txt
+        case 0:
+                  execl("/home/afix/Documents/projet_2/statique","statique","statique.c",NULL);
+                  break;
+
+        default:
+                  wait(NULL);
+                  break;
+}
+
+       }
 
 
 
-        }
 
-        fclose(fichier);//permet de fermer le dossier grâce à la fonction fclose
+
 
 
        }
