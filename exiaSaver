@@ -28,6 +28,10 @@ int main(int argc, char *argv[])
   int pid;
 
 
+  srand(time(NULL)); //srand permet de donner des valeurs aléatoires
+  int randomImage ;
+  randomImage = rand()%5+1;
+
 
   time_t now = time(NULL); //permet de lire l'heure courante
   struct tm tm_now = *localtime(&now);//permet de convertir l'heure en heure locale grâce a localtime
@@ -39,7 +43,21 @@ int main(int argc, char *argv[])
 
 
 
-  randomChiffre = 1;
+int randomType;
+
+randomChiffre = 1;
+
+if (randomChiffre == 1)
+{
+  randomType = randomImage;
+
+}
+
+
+
+
+
+
 
 
        if (argc == 1) { //si il n y a pas d'arguments
@@ -51,7 +69,7 @@ int main(int argc, char *argv[])
        if (fichier != NULL)
        {
 
-             fprintf(fichier,"\n%s %d", s_now, randomChiffre);//ecrit le resultat dans le dossier text.txt
+             fprintf(fichier,"%s %d %d\n", s_now, randomChiffre, randomType);//ecrit le resultat dans le dossier text.txt
 
 
 
@@ -72,7 +90,27 @@ switch(pid)
                   break;
 
         case 0:
-                  execl("/home/afix/Documents/projet_2/statique","statique","statique.c",NULL);
+                  if (randomImage == 1)
+                  {
+                    execl("/home/afix/Documents/projet_2/statique","statique","pbm/moustache.pbm",NULL);
+                  }
+                  if (randomImage == 2)
+                  {
+                    execl("/home/afix/Documents/projet_2/statique","statique","pbm/mario.pbm",NULL);
+                  }
+                  if (randomImage == 3)
+                  {
+                    execl("/home/afix/Documents/projet_2/statique","statique","pbm/chat.pbm",NULL);
+                  }
+                  if (randomImage == 4)
+                  {
+                    execl("/home/afix/Documents/projet_2/statique","statique","pbm/pause.pbm",NULL);
+                  }
+                  if (randomImage == 5)
+                  {
+                    execl("/home/afix/Documents/projet_2/statique","statique","pbm/yoga.pbm",NULL);
+                  }
+
                   break;
 
         default:
