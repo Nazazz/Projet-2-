@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#define TAILE_MAXIMUM 1000 // peut être modifié
 
 
 int main(int argc, char *argv[])
@@ -54,7 +55,10 @@ int main(int argc, char *argv[])
         }
 
 //-----------------------------------------------------------------------------------------------lire le fichier---------------------------------------------------------------------//
-
+                if (fichier != NULL)
+                {
+                        fgets(chaine, TAILLE_MAXIMUM, fichier);  //permet de lire au maximum la taille max prédéfini
+                        printf("%s", chaine) // permet d'affichier la chaîne
 
                 fclose(fichier);
 //     }
