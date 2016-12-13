@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h>
+//tri à bulle
+#define TRUE 1
+#define FALSE 0
+
+
+
+void tri(int *tab, int n)
+{
+    int h = 0;
+    int tmp = 0;
+    int en_desordre = 1;
+    while(en_desordre)
+    {
+        en_desordre=FALSE;
+        for(h = 0; h < n-1; h++){
+            if(tab[h]>tab[h+1]){
+                tmp= tab[h+1];
+                tab[h+1]=tab[h];
+                tab[h]=tmp;
+                en_desordre=TRUE;
+
+            }
+        }
+    }
+}
