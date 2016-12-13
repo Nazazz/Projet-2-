@@ -4,11 +4,9 @@
 int main (void)
 
 {
-system("start Xtremsplit.exe"); //quand le fichier est dans le même répertoire
-system("start ../Xtremsplit.exe"); //pour un executable d'un dossier antérieure
-system("start C:\\WINDOWS\\explorer.exe") //chemin absolue
+exec nom du fichier
 
-system("PAUSE");
+system("wait");
 return 0;
 }
 
