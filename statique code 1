@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
+#include <unistd.h>
 
 
 
@@ -14,32 +16,63 @@ int main(int argc, char *argv[])
 
     FILE* image = NULL;
 
-    int i = 0; // on définie toutes les variables à 0
+    int i = 0;
     int j = 0;
     int k = 0;
     int l = 0;
-    char caractereActuel; // définie une structure 
-    int tabx; // définie la largeur du tableau
-    int taby; // définie la longueur du tableau
+    char caractereActuel;
+    int tabx;
+    int taby;
     int* tabAdd[5];
-    int tabAff[24][80]= {0}; // définie la taille fixe de la console
+    int tabAff[24][80]= {0};
     int calcx = 0;
     int calcy = 0;
 
-    int randomImage = 1;
+    int randomImage = 0;
+
+    srand(time(NULL)); //srand permet de donner des valeurs aléatoires
+    int nombre ;
+    nombre = rand()%5+1;
+    randomImage = nombre;
+    system("clear");
+
+
+    FILE* fichier = NULL; //le pointeur est initié a NULL car nous n'avons pas de valeur à lui donner.
+    fichier = fopen("historique.txt", "a+"); //nous demandons au fichier text.txt de s'ouvrir.
+    fprintf(fichier," %d", randomImage);//ecrit le resultat dans le dossier text.txt
+    fclose(fichier);//permet de fermer le dossier grâce à la fonction fclose
 
 
 
 
-    if (randomImage == 1) // choix aléatoire d'une image
+
+
+    if (randomImage == 1)
     {
-      image = fopen("ex1.pbm", "r"); // permet d'ouvrir le fichier contenant l'image ex1
+      image = fopen("pbm/moustache.pbm", "r");
     }
 
     if (randomImage == 2)
     {
-      image = fopen("ex2.pbm", "r");
+      image = fopen("pbm/mario.pbm", "r");
     }
+
+    if (randomImage == 3)
+    {
+      image = fopen("pbm/chat.pbm", "r");
+    }
+
+    if (randomImage == 4)
+    {
+      image = fopen("pbm/pause.pbm", "r");
+    }
+
+    if (randomImage == 5)
+    {
+      image = fopen("pbm/yoga.pbm", "r");
+    }
+
+
 
 
     if (image != NULL)
@@ -132,12 +165,12 @@ if (image != NULL)
             i = 0;
             j = 0;
 
-            system("clear");
+
 
 
             for (i = 0; i < 24; i++)
             {
-
+              printf ("\n");
                 for(j = 0; j < 80; j++)
                 {
 
@@ -151,14 +184,15 @@ if (image != NULL)
                   }
 
               }
-                printf ("\n");
+
+
 
             }
 
-      system("stty cbreak -echo"); // permet de faire un arrêt
-      getchar(); // permet de voir si l'utilisateur appuie sur une touche
+      system("stty cbreak -echo");
+      getchar();
       system("stty cooked echo");
-      system("clear"); // permet de supprimer le contenue
+      system("clear");
 
     return 1;
 
@@ -168,19 +202,19 @@ if (image != NULL)
 
 
 
-int calcCentrex(int tabx) // cette fonction permet de centrer l'image au niveau de la largueur
+int calcCentrex(int tabx)
 
 {
   int calcx ;
-  calcx = 80 - tabx ; // calcul la différence entre la taille de la console et celle de l'image
-  calcx = calcx / 2 ; // divise la valeur calculée juste avant 
+  calcx = 80 - tabx ;
+  calcx = calcx / 2 ;
 
 
   return calcx;
 }
 
 
-int calcCentrey(int taby) // cette fonction permet de centrer l'image au niveau de la hauteur
+int calcCentrey(int taby)
 
 {
   int calcy ;
