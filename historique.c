@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define TAILE_MAXIMUM 1000 // peut être modifié
 
 
 int main(int argc, char *argv[])
@@ -10,7 +9,6 @@ int main(int argc, char *argv[])
 //-------------------------------------------------------------------------------- pour ouvrir le fichier---------------------------------------------------------------------------//
 
         FILE* fichier = NULL; //le pointeur est initié a NULL car nous n'avons pas de valeur à lui donner.
-        char chaine[TAILLE_MAXIMUM] = ""; // Chaîne vide de taille TAILLE_MAXiMUM
         fichier = fopen("text.txt", "a+"); //nous demandons au fichier text.txt de s'ouvrir.
         if (fichier != NULL)
         {
@@ -56,11 +54,24 @@ int main(int argc, char *argv[])
         }
 
 //-----------------------------------------------------------------------------------------------lire le fichier---------------------------------------------------------------------//
-                if (fichier != NULL)
+                
+        int type;
+        int type2;
+        //ne pas oublier de mettre la structure s_now plus haut
+        
+        
+        if (fichier != NULL)
                 {
-                        fgets(chaine, TAILLE_MAXIMUM, fichier);  //permet de lire au maximum la taille max prédéfini
-                        printf("%s", chaine) // permet d'affichier la chaîne
-
+                        fscanf(fichier, "%s %d %d", &s_now, &type, &type2);
+                        if type = 1 
+                        {
+                                printf("... , s_now, type, type2);
+                        }
+                        if type = 2
+                        {
+                                printf("... , s_now, type, type2);
+                        }
+                       
                 fclose(fichier);
                 }
 
