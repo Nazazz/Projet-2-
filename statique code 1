@@ -14,15 +14,15 @@ int main(int argc, char *argv[])
 
     FILE* image = NULL;
 
-    int i = 0;
+    int i = 0; // on définie toutes les variables à 0
     int j = 0;
     int k = 0;
     int l = 0;
-    char caractereActuel;
-    int tabx;
-    int taby;
+    char caractereActuel; // définie une structure 
+    int tabx; // définie la largeur du tableau
+    int taby; // définie la longueur du tableau
     int* tabAdd[5];
-    int tabAff[24][80]= {0};
+    int tabAff[24][80]= {0}; // définie la taille fixe de la console
     int calcx = 0;
     int calcy = 0;
 
@@ -31,9 +31,9 @@ int main(int argc, char *argv[])
 
 
 
-    if (randomImage == 1)
+    if (randomImage == 1) // choix aléatoire d'une image
     {
-      image = fopen("ex1.pbm", "r");
+      image = fopen("ex1.pbm", "r"); // permet d'ouvrir le fichier contenant l'image ex1
     }
 
     if (randomImage == 2)
@@ -155,10 +155,10 @@ if (image != NULL)
 
             }
 
-      system("stty cbreak -echo");
-      getchar();
+      system("stty cbreak -echo"); // permet de faire un arrêt
+      getchar(); // permet de voir si l'utilisateur appuie sur une touche
       system("stty cooked echo");
-      system("clear");
+      system("clear"); // permet de supprimer le contenue
 
     return 1;
 
@@ -168,19 +168,19 @@ if (image != NULL)
 
 
 
-int calcCentrex(int tabx)
+int calcCentrex(int tabx) // cette fonction permet de centrer l'image au niveau de la largueur
 
 {
   int calcx ;
-  calcx = 80 - tabx ;
-  calcx = calcx / 2 ;
+  calcx = 80 - tabx ; // calcul la différence entre la taille de la console et celle de l'image
+  calcx = calcx / 2 ; // divise la valeur calculée juste avant 
 
 
   return calcx;
 }
 
 
-int calcCentrey(int taby)
+int calcCentrey(int taby) // cette fonction permet de centrer l'image au niveau de la hauteur
 
 {
   int calcy ;
