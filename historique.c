@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define TAILLE_MAXIMUM 1000 //tableau avec une taille de 1000 (modifiable)
+
 
 int main(int argc, char *argv[])
 {
@@ -9,8 +9,7 @@ int main(int argc, char *argv[])
 //-------------------------------------------------------------------------------- pour ouvrir le fichier---------------------------------------------------------------------------//
 
         FILE* fichier = NULL; //le pointeur est initié a NULL car nous n'avons pas de valeur à lui donner.
-        char chaine[TAILLE_MAXIMUM] = ""; //chaine vide de TAILLE_MAX (1000)
-        fichier = fopen("text.txt", "r+"); //nous demandons au fichier text.txt de s'ouvrir.
+        fichier = fopen("text.txt", "a+"); //nous demandons au fichier text.txt de s'ouvrir.
         if (fichier != NULL)
         {
         }
@@ -56,11 +55,7 @@ int main(int argc, char *argv[])
 
 //-----------------------------------------------------------------------------------------------lire le fichier---------------------------------------------------------------------//
 
-//      if (fichier != NULL)
-//      {
-//                      fgets(chaine, TAILLE_MAXIMUM, fichier);
-//              printf("%s", chaine);
-//              printf("\n\n");
+
                 fclose(fichier);
 //     }
 
