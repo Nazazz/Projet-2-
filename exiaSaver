@@ -1,7 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
+#include <unistd.h>
 
+#include "fonction.h"
+
+int randomVeille();
+int afficheMenu();
 
 
 
@@ -10,9 +16,24 @@
 int main(int argc, char *argv[])
 
 {
-  char stat[] = "-stat"; // declare la chaine de caractere -stat pour comparer a l argument entrer 
+  char stat[] = "-stat"; // declare la chaine de caractere -stat pour comparer a l argument entrer
+  int randomChiffre;
+  int type;
+  int type2;
+  char date[]= "JJ/MM/AAAA" ;
+  char heure[]= "HH:MM:SS" ;
+  int i = 0;
+  char caractereActuel = 'a';
 
 
+
+  time_t now = time(NULL); //permet de lire l'heure courante
+  struct tm tm_now = *localtime(&now);//permet de convertir l'heure en heure locale grâce a localtime
+  char s_now[sizeof "JJ/MM/AAAA HH:MM:SS"];// crée une chaine pour savoir comment cela va s'afficher sur le terminal
+  strftime (s_now, sizeof s_now, "%d/%m/%Y %H:%M:%S", &tm_now);
+
+  randomChiffre = randomVeille() ;
+  FILE* fichier = NULL; //le pointeur est initié a NULL car nous n'avons pas de valeur à lui donner.
 
 
        if (argc == 1) { //si il n y a pas d'arguments
@@ -20,25 +41,142 @@ int main(int argc, char *argv[])
        system("clear"); //vide le terminal
        printf("Le programme n'a reçu aucun argument\n");
 
+       printf("%d\n", randomChiffre);
+
+
+
+
+        fichier = fopen("historique.txt", "a+"); //nous demandons au fichier text.txt de s'ouvrir.
+
+        if (fichier != NULL)
+        {
+
+              fprintf(fichier,"\n%s %d", s_now, randomChiffre);//ecrit le resultat dans le dossier text.txt
+
+
+
+        }
+
+        fclose(fichier);//permet de fermer le dossier grâce à la fonction fclose
+
+
        }
-       else if (strcmp(argv[1], stat) != 0) // si l argument n est pas -stat 
+
+
+
+
+
+       else if (strcmp(argv[1], stat) != 0) // si l argument n est pas -stat
        {
          printf("mauvais argument \n");
 
        }
 
-       else if (strcmp(argv[1], stat) == 0) // si l argument est stat 
+
+
+
+       else if (strcmp(argv[1], stat) == 0) // si l argument est stat
        {
 
 
-           system("clear");
+         fichier = fopen("historique.txt", "r+");
+
+         while (caractereActuel != EOF )
+         {
+           while (caractereActuel != '\n')
+           {
+             caractereActuel = fgetc(fichier);
+           }
+
+           i++;
+         }
+
+
+         fclose(fichier);//permet de fermer le dossier grâce à la fonction fclose
+
+
+          system("clear");
+
+           switch(afficheMenu())
+             {
+               case 1:
+
+                    //fichier = fopen("historique.txt", "r");
+                     printf(">>>>>Voici les statistiques pour l'ecran statique<<<<<\n\n\n\n");
+                     printf("date       heure      fichier ouvert\n");
+
+                     /*
+
+                     if (fichier != NULL)
+
+                     {
+
+                      while(i)
+                      {
+                       fscanf(fichier, "%s %s %d %d", &date , &heure, &type, &type2);
+
+                       if (type = 1)
+                       {
+                        printf("%s %s   %d\n", date, heure, type2);
+
+                       }
+
+                     }
+
+
+                        fclose(fichier);//permet de fermer le dossier grâce à la fonction fclose
+
+                     } */
+
+                     break;
+               case 2:
+                     printf("Voici les statistiques pour l'ecran dynamique\n");
+                     break;
+               case 3:
+                     printf("Voici les statistiques pour l'ecran interactif\n");
+           break;
+
+                case 4:
+                      printf("Voici les statistiques general\n\n\n");
+                      printf("exiasveur a ete utiliser %d fois\n",i );
+
+
+                      break;
+
            printf(":stat \n");
            printf("             date       type      description      \n");
 
 
        }
+  }
 
     return EXIT_SUCCESS;
 
 
+}
+
+
+int randomVeille()
+{
+    srand(time(NULL)); //srand permet de donner des valeurs aléatoires
+    int nombre ;
+    nombre = rand()%3+1;   //le modulo % nous permet de réduire l'interval des nombres, ici le nombre aléatoires sera copris entre 1 et 3
+
+    return nombre;
+
+}
+
+int afficheMenu()
+{
+  int ChoixMenu;
+
+  printf("------MENU------\n\n");
+  printf("1.STATIQUE\n");
+  printf("2.DYNAMIQUE\n");
+  printf("3.INTERACTIF\n");
+  printf("4.General\n\n");
+  printf("Faites votre choix\n");
+
+  scanf("%d" , &ChoixMenu);
+  return ChoixMenu;
 }
