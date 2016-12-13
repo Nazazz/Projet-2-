@@ -28,49 +28,40 @@ int main(int argc, char *argv[])
     int calcx = 0;
     int calcy = 0;
 
-    int randomImage = 0;
 
-    srand(time(NULL)); //srand permet de donner des valeurs aléatoires
-    int nombre ;
-    nombre = rand()%5+1;
-    randomImage = nombre;
     system("clear");
 
-
-    FILE* fichier = NULL; //le pointeur est initié a NULL car nous n'avons pas de valeur à lui donner.
-    fichier = fopen("historique.txt", "a+"); //nous demandons au fichier text.txt de s'ouvrir.
-    fprintf(fichier," %d", randomImage);//ecrit le resultat dans le dossier text.txt
-    fclose(fichier);//permet de fermer le dossier grâce à la fonction fclose
+    printf("argv :%s \n", argv[1]);
 
 
 
-
-
-
-    if (randomImage == 1)
+    if (strcmp(argv[1], "pbm/moustache.pbm") == 0)
     {
-      image = fopen("pbm/moustache.pbm", "r");
+      image = fopen( argv[1] , "r");
     }
 
-    if (randomImage == 2)
+    if (strcmp(argv[1], "pbm/mario.pbm") == 0)
     {
-      image = fopen("pbm/mario.pbm", "r");
+      image = fopen(argv[1], "r");
     }
 
-    if (randomImage == 3)
+    if (strcmp(argv[1], "pbm/chat.pbm") == 0)
     {
-      image = fopen("pbm/chat.pbm", "r");
+      image = fopen(argv[1], "r");
     }
 
-    if (randomImage == 4)
+    if (strcmp(argv[1], "pbm/pause.pbm") == 0)
     {
-      image = fopen("pbm/pause.pbm", "r");
+      image = fopen(argv[1], "r");
     }
 
-    if (randomImage == 5)
+    if (strcmp(argv[1], "pbm/yoga.pbm") == 0)
     {
-      image = fopen("pbm/yoga.pbm", "r");
+      image = fopen(argv[1], "r");
     }
+
+
+
 
 
 
