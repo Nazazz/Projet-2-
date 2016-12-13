@@ -10,6 +10,7 @@ int main(int argc, char *argv[])
 //-------------------------------------------------------------------------------- pour ouvrir le fichier---------------------------------------------------------------------------//
 
         FILE* fichier = NULL; //le pointeur est initié a NULL car nous n'avons pas de valeur à lui donner.
+        char chaine[TAILLE_MAXIMUM] = ""; // Chaîne vide de taille TAILLE_MAXiMUM
         fichier = fopen("text.txt", "a+"); //nous demandons au fichier text.txt de s'ouvrir.
         if (fichier != NULL)
         {
@@ -27,7 +28,7 @@ int main(int argc, char *argv[])
                 struct tm tm_now = *localtime(&now);//permet de convertir l'heure en heure locale grâce a localtime
                 char s_now[sizeof "JJ/MM/AAAA HH:MM:SS"];// crée une chaine pour savoir comment cela va s'afficher sur le terminal
                 strftime (s_now, sizeof s_now, "%d/%m/%Y %H:%M:%S", &tm_now);
-                fprintf(fichier,"%s ecran tiré au sort", s_now);//afficher le resultat dans le dossier text.txt
+                fprintf(fichier,"%s %d", s_now, randomVeille);//afficher le resultat dans le dossier text.txt
 
         }
 
