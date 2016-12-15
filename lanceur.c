@@ -16,152 +16,169 @@ int afficheMenu();
 int main(int argc, char *argv[])
 
 {
-  char stat[] = "-stat";      // declare la chaine de caractere -stat pour comparer a l argument entrer
-  int randomChiffre;          //declare la variable randomChiffre
-  int type;                   //declare la variable type
-  int type2;                  //declare la variable type2
-  char date[]= "JJ/MM/AAAA" ;  //declare la chaîne de caractère pour la date
-  char heure[]= "HH:MM:SS" ;   // declare la chaîne de caractère pour l'heure
-  int i = 0;                   //initialisation de la variable i à 0
+  char stat[] = "-stat"; // declare la chaine de caractere -stat pour comparer a l argument entrer
+  int randomChiffre;
+  int type;
+  int type2;
+  char date[]= "JJ/MM/AAAA" ;
+  char heure[]= "HH:MM:SS" ;
+  int i = 0;
   char caractereActuel = 'a';
   int pid;
+  int randomImage ;
+  int randomSens ;
+  int randomType;
+
+  FILE* fichier = NULL; //le pointeur est initié a NULL car nous n'avons pas de valeur à lui donner.
 
 
-  srand(time(NULL));           //srand permet de donner des valeurs aléatoires
-  int randomImage ;            //declare la variable randomImage  
-  randomImage = rand()%5+1;    //execute un random entre 1 et 5 
 
-  srand(time(NULL));           //srand permet de donner des valeurs aléatoires
-  int randomSens ;             //declare la variable randomSens
-  randomSens = rand()%4+1;     //execute une random entre 1 et 4
+  srand(time(NULL)); //srand permet de donner des valeurs aléatoire
+  randomImage = rand()%5+1;
+
+  srand(time(NULL)); //srand permet de donner des valeurs aléatoire
+  randomSens = rand()%4+1;
 
 
-  time_t now = time(NULL);     //permet de lire l'heure courante
+  time_t now = time(NULL); //permet de lire l'heure courante
   struct tm tm_now = *localtime(&now);//permet de convertir l'heure en heure locale grâce a localtime
   char s_now[sizeof "JJ/MM/AAAA HH:MM:SS"];// crée une chaine pour savoir comment cela va s'afficher sur le terminal
   strftime (s_now, sizeof s_now, "%d/%m/%Y %H:%M:%S", &tm_now);
 
   randomChiffre = randomVeille() ;
-  FILE* fichier = NULL; //le pointeur est initié a NULL car nous n'avons pas de valeur à lui donner.
 
 
-
-int randomType;         
-
-
-if (randomChiffre == 1) //si la variable randomChiffre est égal à 1
+if (randomChiffre == 2)
 {
-  randomType = randomImage;  
+  while (randomChiffre == 2)
+  {
+  randomChiffre = randomVeille();
+  }
 
-}
-if (randomChiffre == 3) //si la variable randomChiffre est égal à 3
-{
-  randomType = randomSens;
 }
 
 
 
+  //randomChiffre = 3; // pour les test
+
+
+  if (randomChiffre == 1)
+    {
+      randomType = randomImage;
+    }
+
+  if (randomChiffre == 3)
+    {
+      randomType = randomSens;
+    }
 
 
 
 
 
-       if (argc == 1) { //si il n y a pas d'arguments
 
+
+
+  if (argc == 1) //si il n y a pas d'arguments
+    {
        system("clear"); //vide le terminal
-
        fichier = fopen("historique.txt", "a+"); //nous demandons au fichier text.txt de s'ouvrir.
 
        if (fichier != NULL)
-       {
-
-             fprintf(fichier,"%s %d %d\n", s_now, randomChiffre, randomType);//ecrit le resultat dans le dossier text.txt
-
-
-
-       }
+          {
+            fprintf(fichier,"%s %d %d\n", s_now, randomChiffre, randomType);//ecrit le resultat dans le dossier text.txt
+          }
 
        fclose(fichier);//permet de fermer le dossier grâce à la fonction fclose
 
 
        if (randomChiffre == 1)
-       {
-         pid = fork();
+          {
+            pid = fork();
 
-switch(pid)
+            switch(pid)
 
-        {
-        case -1:
-                  printf("erreur");
-                  break;
+              {
+                case -1:
+                          printf("erreur");
+                          break;
 
-        case 0:
-                  if (randomImage == 1)
-                  {
-                    execl("/home/afix/Documents/projet_2/EXIASAVER_HOME/statique","statique","pbm/moustache.pbm",NULL);
-                  }
-                  if (randomImage == 2)
-                  {
-                    execl("/home/afix/Documents/projet_2/EXIASAVER_HOME/statique","statique","pbm/mario.pbm",NULL);
-                  }
-                  if (randomImage == 3)
-                  {
-                    execl("/home/afix/Documents/projet_2/EXIASAVER_HOME/statique","statique","pbm/chat.pbm",NULL);
-                  }
-                  if (randomImage == 4)
-                  {
-                    execl("/home/afix/Documents/projet_2/EXIASAVER_HOME/statique","statique","pbm/pause.pbm",NULL);
-                  }
-                  if (randomImage == 5)
-                  {
-                    execl("/home/afix/Documents/projet_2/EXIASAVER_HOME/statique","statique","pbm/yoga.pbm",NULL);
-                  }
+                case 0:
+                          if (randomImage == 1)
+                            {
+                              execl("/home/afix/Documents/projet_2/EXIASAVER_HOME/statique","statique","EXIASAVER1_PBM/moustache.pbm",NULL);
+                            }
 
-                  break;
+                          if (randomImage == 2)
+                            {
+                              execl("/home/afix/Documents/projet_2/EXIASAVER_HOME/statique","statique","EXIASAVER1_PBM/mario.pbm",NULL);
+                            }
 
-        default:
-                  wait(NULL);
-                  break;
-}
+                          if (randomImage == 3)
+                            {
+                              execl("/home/afix/Documents/projet_2/EXIASAVER_HOME/statique","statique","EXIASAVER1_PBM/chat.pbm",NULL);
+                            }
 
-       }
+                          if (randomImage == 4)
+                            {
+                              execl("/home/afix/Documents/projet_2/EXIASAVER_HOME/statique","statique","EXIASAVER1_PBM/pause.pbm",NULL);
+                            }
 
+                          if (randomImage == 5)
+                            {
+                              execl("/home/afix/Documents/projet_2/EXIASAVER_HOME/statique","statique","EXIASAVER1_PBM/yoga.pbm",NULL);
+                            }
 
-       if (randomChiffre == 3)
-       {
-         pid = fork();   //utilisation du fork
+                          break;
 
-     switch(pid)
-
-        {
-        case -1:
-                  printf("erreur");
-                  break;
-
-        case 0:
-                  if (randomSens == 1)
-                  {
-                    execl("/home/afix/Documents/projet_2/EXIASAVER_HOME/interactif_touche","interactif_touche","1",NULL);
-                  }
-                  if (randomSens == 2)
-                  {
-                    execl("/home/afix/Documents/projet_2/EXIASAVER_HOME/interactif_touche","interactif_touche","2",NULL);                  }
-                  if (randomSens == 3)
-                  {
-                    execl("/home/afix/Documents/projet_2/EXIASAVER_HOME/interactif_touche","interactif_touche","3",NULL);                  }
-                  if (randomSens == 4)
-                  {
-                    execl("/home/afix/Documents/projet_2/EXIASAVER_HOME/interactif_touche","interactif_touche","4",NULL);                  }
-
-
-                  break;
-
-        default:
-                  wait(NULL);
-                  break;
-     }
+              default:
+                          wait(NULL);
+                          break;
+          }
 
        }
+
+
+      if (randomChiffre == 3)
+          {
+            pid = fork();
+
+            switch(pid)
+                  {
+                      case -1:
+                                printf("erreur");
+                                break;
+
+                      case 0:
+                                if (randomSens == 1)
+                                    {
+                                      execl("/home/afix/Documents/projet_2/EXIASAVER_HOME/interactif_touche","interactif_touche","1",NULL);
+                                    }
+
+                                if (randomSens == 2)
+                                    {
+                                      execl("/home/afix/Documents/projet_2/EXIASAVER_HOME/interactif_touche","interactif_touche","2",NULL);
+                                     }
+
+                                if (randomSens == 3)
+                                    {
+                                      execl("/home/afix/Documents/projet_2/EXIASAVER_HOME/interactif_touche","interactif_touche","3",NULL);
+                                    }
+
+                                if (randomSens == 4)
+                                    {
+                                      execl("/home/afix/Documents/projet_2/EXIASAVER_HOME/interactif_touche","interactif_touche","4",NULL);
+                                    }
+
+
+                                break;
+
+            default:
+                        wait(NULL);
+                        break;
+                      }
+
+            }
 
 
 
@@ -176,63 +193,52 @@ switch(pid)
 
 
        else if (strcmp(argv[1], stat) != 0) // si l argument n est pas -stat
-       {
-         printf("mauvais argument \n");
-
-       }
-
-
+            {
+              printf("mauvais argument \n");
+            }
 
 
        else if (strcmp(argv[1], stat) == 0) // si l argument est stat
-       {
+            {
+              fichier = fopen("historique.txt", "r+");
+
+              while (caractereActuel != EOF )
+                  {
+                    if (caractereActuel == '\n')
+                        {
+                            i++;
+                        }
+
+                    caractereActuel = fgetc(fichier);
+                  }
 
 
-         fichier = fopen("historique.txt", "r+");
+              fclose(fichier);//permet de fermer le dossier grâce à la fonction fclose
 
-         while (caractereActuel != EOF )
-         {
-           if (caractereActuel == '\n')
-           {
-             i++;
-           }
+              system("clear");
 
-           caractereActuel = fgetc(fichier);
-         }
+              switch(afficheMenu())
+                    {
+                      case 1:  //fichier = fopen("historique.txt", "r");
 
+                                system("clear");
+                                printf(">>>>>Voici les statistiques pour l'ecran statique<<<<<\n\n\n\n");
+                                printf("date       heure      fichier ouvert\n\n\n");
 
-         fclose(fichier);//permet de fermer le dossier grâce à la fonction fclose
+                                fichier = fopen("historique.txt", "r+");
 
+                                if (fichier != NULL)
+                                    {
+                                      while(i > 0)
+                                          {
+                                              fscanf(fichier, "%s %s %d %d", &date , &heure, &type, &type2);
+                                              if (type == 1)
+                                                  {
+                                                    printf("%s %s   %d\n", date, heure, type2);
+                                                  }
 
-          system("clear");
-
-           switch(afficheMenu())
-             {
-               case 1:
-
-                    //fichier = fopen("historique.txt", "r");
-                    system("clear");
-                     printf(">>>>>Voici les statistiques pour l'ecran statique<<<<<\n\n\n\n");
-                     printf("date       heure      fichier ouvert\n\n\n");
-
-                     fichier = fopen("historique.txt", "r+");
-
-                     if (fichier != NULL)
-
-                     {
-
-                      while(i > 0)
-                      {
-                       fscanf(fichier, "%s %s %d %d", &date , &heure, &type, &type2);
-
-                       if (type == 1)
-                       {
-                        printf("%s %s   %d\n", date, heure, type2);
-
-                       }
-
-                       i--;
-                     }
+                                              i--;
+                                          }
 
 
                         fclose(fichier);//permet de fermer le dossier grâce à la fonction fclose
@@ -330,10 +336,10 @@ int randomVeille()
     return nombre;
 
 }
-//Menu du lanceur
+
 int afficheMenu()
 {
-  int ChoixMenu;      
+  int ChoixMenu;
 
   printf("------MENU------\n\n");
   printf("1.STATIQUE\n");
