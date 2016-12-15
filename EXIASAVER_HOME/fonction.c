@@ -4,43 +4,43 @@
 
 
 
-int tailleImageX(FILE* image)
+int tailleImageX(FILE* image) // permet de de trouver dans le fichier la taille x et de la retourner 
 {
   int i = 0;
   char caractereActuel;
   int tabx;
   int taby;
 
-  fseek(image, 0, SEEK_SET); //place le curseur au début du fichier
+  fseek(image, 0, SEEK_SET); //place le curseur au debut du fichier 
 
-  if (image != NULL)      
+  if (image != NULL)
   {
-    while (i <=2)
+    while (i <=2) //permet de caluler le nombre de ligne 
     {
-      while (caractereActuel != '\n')
+      while (caractereActuel != '\n') 
       {
         caractereActuel = fgetc(image);
       }
 
       i++;
 
-      if (i == 1)
+      if (i == 1)// si on est a la deuxieme ligne 
       {
-        fscanf(image, "%d %d ", &taby, &tabx); //lit la taille x et y des images 
+        fscanf(image, "%d %d ", &taby, &tabx); // permet de recuperer les tailles de l image 
         i++;
       }
     }
   }
 
 
-return tabx;
+return tabx; // retourne la taille x de l image 
 
 }
 
 
 
 
-int tailleImageY(FILE* image)
+int tailleImageY(FILE* image) // meme fonction que tailleImageX mais retourne la valeur de 
 {
   int i = 0;
   char caractereActuel;
@@ -69,7 +69,7 @@ int tailleImageY(FILE* image)
   }
 
 
-return taby;
+return taby; // retourne la taille y de l image
 
 }
 
@@ -78,7 +78,7 @@ return taby;
 
 
 
-int calcCentrex(int tabx)
+int calcCentrex(int tabx) // calcul indice x du tableau pour centrer l image et la retourne
 
 {
   int calcx ;
@@ -90,7 +90,7 @@ int calcCentrex(int tabx)
 }
 
 
-int calcCentrey(int taby)
+int calcCentrey(int taby) // calcul indice y du tableau pour centrer l image et la retourne
 
 {
   int calcy ;
@@ -101,12 +101,13 @@ int calcCentrey(int taby)
 }
 
 
-void decaler(int a, int b , int tabAff[23][80])
+void decaler(int a, int b , int tabAff[23][80]) // permet de decaler toutte les valeurs du tableau d affichage
 {
 
   int i =0;
   int j =0;
   int tabSave[24][80];
+  
 /*
   if (a == 1)
   {
@@ -139,7 +140,7 @@ void decaler(int a, int b , int tabAff[23][80])
 
 
 
-  if (a == -1)
+  if (a == -1) // decale toute les valeurs vers le bas 
   {
     for (j = 0; j < 22 ; j++)
     {
@@ -170,7 +171,7 @@ void decaler(int a, int b , int tabAff[23][80])
 
   //en haut
 
-   if (a == 1)
+   if (a == 1) // decale toute les valeurs vers le haut
 
     {
 
@@ -225,7 +226,7 @@ void decaler(int a, int b , int tabAff[23][80])
 
   //a gauche
 
-   if (a == -1)
+   if (a == -1) // decale toute les valeurs vers la gauche
 
     {
 
@@ -276,7 +277,7 @@ void decaler(int a, int b , int tabAff[23][80])
 
   //a droite
 
-   if (a == 1)
+   if (a == 1) // decale toute les valeurs vers la droite
 
     {
 
@@ -396,7 +397,7 @@ void decaler(int a, int b , int tabAff[23][80])
 
 }
 
-void DecPoint(int ligne , int col, int a , int b, int tabAff[23][80])
+void DecPoint(int ligne , int col, int a , int b, int tabAff[23][80]) // permet d appeler la fonction de decalage un certain nombre de fois 
 {
 //39
 //7
@@ -406,7 +407,7 @@ i = ligne ;
 j = col;
 
 
-if (ligne << 0)
+if (ligne << 0) // si on veut dessandre toutte les valeurs tant de fois 
 {
   while(i != 0)
   {
@@ -416,7 +417,7 @@ if (ligne << 0)
 
 }
 
-else if (ligne >> 0)
+else if (ligne >> 0) // si on veut monter toutte les valeurs tant de fois 
 {
   while(i != 0)
   {
@@ -425,7 +426,7 @@ else if (ligne >> 0)
   }
 }
 
-else if (col << 0)
+else if (col << 0) // si on veut decaler vers la droite toutte les valeurs tant de fois 
 {
   while(j != 0)
   {
@@ -434,7 +435,7 @@ else if (col << 0)
   }
 }
 
-else if (col >> 0)
+else if (col >> 0) // si on veut decaler vers la droite toutte les valeurs tant de fois 
 {
   while(j != 0)
   {
