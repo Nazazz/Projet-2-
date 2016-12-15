@@ -5,6 +5,7 @@
 #include <time.h>
 #include <unistd.h>
 #include "fonction.h"
+#include "fonction_ins.h"
 
 
 
@@ -63,14 +64,14 @@ int main(int argc, char *argv[])
 
 
 
-
-
-
     tabx = tailleImageX(image);
     taby = tailleImageY(image);
 
+    int InfoImage[24][80] ;
 
+inserTabPbm(image,taby,tabx,InfoImage);
 
+/*
     fseek(image, 0, SEEK_SET);
 
 
@@ -92,7 +93,7 @@ i = 0;
 
 fseek(image, 1, SEEK_CUR);
 
-    int InfoImage[taby][tabx] ;
+
 
 
       i = 0;
@@ -137,7 +138,7 @@ if (image != NULL)
 
   }
 
-
+*/
   //int **InfoImage;
 
   //InfoImage = inserTabPbm (image, tabx, taby);

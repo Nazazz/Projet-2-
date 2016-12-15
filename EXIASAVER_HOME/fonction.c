@@ -74,95 +74,9 @@ return taby;
 }
 
 
-/*
-
-int** inserTabPbm (FILE* image,int tabx, int taby)
-
-{
-
-  int i = 0;
-  int j = 0;
-
-  char caractereActuel;
-
-
-      fseek(image, 0, SEEK_SET);
-
-
-  i = 0;
-
-     if (image != NULL)
-      {
-        while (i <=2)
-        {
-          while (caractereActuel != '\n')
-          {
-            caractereActuel = fgetc(image);
-          }
-
-          i++;
-
-        }
-     }
-
-  fseek(image, 1, SEEK_CUR);
-
-  int y;
-  int x;
-  y =taby;
-  x = tabx;
-
-  static int InfoImage[y][x];
 
 
 
-        i = 0;
-        j = 0;
-
-
-
-
-  if (image != NULL)
-  {
-
-        for (i = 0; i < taby ; i++)
-        {
-            for(j = 0; j < tabx; j++)
-            {
-                  caractereActuel = fgetc(image);
-
-                  if ( (caractereActuel == '1') || (caractereActuel == '0'))
-                  {
-                    if (caractereActuel == '0')
-                    {
-                      InfoImage[i][j] = 0;
-                    }
-
-                    if (caractereActuel == '1')
-                    {
-                      InfoImage[i][j] = 1;
-                    }
-
-
-                  }
-
-                  else
-                  {
-                    j--;
-                  }
-
-
-            }
-
-        }
-
-    }
-
-
-
-    return InfoImage;
-}
-*/
 
 int calcCentrex(int tabx)
 
@@ -193,7 +107,7 @@ void decaler(int a, int b , int tabAff[23][80])
   int i =0;
   int j =0;
   int tabSave[24][80];
-
+/*
   if (a == 1)
   {
     for (j = 0; j < 22 ; j++)
@@ -219,7 +133,7 @@ void decaler(int a, int b , int tabAff[23][80])
     }
 
   }
-
+*/
 
 
 
@@ -254,7 +168,158 @@ void decaler(int a, int b , int tabAff[23][80])
 
 
 
+  //en haut
 
+   if (a == 1)
+
+    {
+
+      for (j = 0; j < 22 ; j++)
+
+      {
+
+        for(i = 0; i < 80 ; i ++)
+        {
+
+
+          tabSave[j][i] = tabAff[j][i];
+
+        }
+
+      }
+
+
+
+      for (j = 0; j < 22 ; j++)
+
+      {
+
+        for(i = 0; i < 80 ; i ++)
+
+        {
+
+          tabAff[j][i] = tabSave[j+1][i];
+
+        }
+
+      }
+
+
+
+      for(i = 0; i < 80 ; i ++)
+
+      {
+
+        tabAff[0][i] = tabSave[21][i];
+
+
+
+      }
+
+
+
+}
+
+
+
+
+  //a gauche
+
+   if (a == -1)
+
+    {
+
+      for (i = 0; i < 79 ; i++)
+
+      {
+
+        for(j = 0; j < 23 ; j ++)
+        {
+
+
+          tabSave[i][j] = tabAff[i][j];
+
+        }
+
+      }
+
+
+
+      for (i = 0; i < 79 ; i++)
+
+      {
+
+        for(j = 0; j < 23 ; j ++)
+
+        {
+
+          tabAff[i][j] = tabSave[i-1][j];
+
+        }
+
+      }
+
+
+
+      for(j = 0; j < 22 ; j ++)
+
+      {
+
+        tabAff[0][j] = tabSave[79][j];
+
+
+
+      }
+
+}
+
+
+  //a droite
+
+   if (a == 1)
+
+    {
+
+      for (i = 0; i < 79 ; i++)
+
+      {
+
+        for(j = 0; j < 23 ; j ++)
+
+
+          tabSave[i][j] = tabAff[i][j];
+
+        }
+
+      }
+
+
+
+      for (i = 0; i < 79 ; i++)
+
+      {
+
+        for(j = 0; j < 23 ; j ++)
+
+        {
+
+          tabAff[i][j] = tabSave[i+1][j];
+
+        }
+
+      }
+
+
+
+      for(j = 0; j < 22 ; j ++)
+
+      {
+
+        tabAff[0][j] = tabSave[79][j];
+
+
+
+  }
 
 
 /*
