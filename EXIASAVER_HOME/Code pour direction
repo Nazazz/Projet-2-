@@ -1,0 +1,153 @@
+ //en haut
+
+ if (a == +1)
+
+  {
+
+    for (j = 0; j < 22 ; j++)
+
+    {
+
+      for(i = 0; i < 80 ; i ++)
+                                                                        
+
+        tabSave[j][i] = tabAff[j][i];
+
+      }
+
+    }
+
+
+
+    for (j = 0; j < 22 ; j++)
+
+    {
+
+      for(i = 0; i < 80 ; i ++)
+
+      {
+
+        tabAff[j][i] = tabSave[j+1][i];
+
+      }
+
+    }
+
+
+
+    for(i = 0; i < 80 ; i ++)
+
+    {
+
+      tabAff[0][i] = tabSave[21][i];
+
+
+
+    }
+
+
+
+
+
+  }
+
+
+
+
+
+//a gauche
+
+ if (a == -1)
+
+  {
+
+    for (i = 0; i < 79 ; i++)
+
+    {
+
+      for(j = 0; j < 23 ; j ++)
+                                                                        
+
+        tabSave[i][j] = tabAff[i][j];
+
+      }
+
+    }
+
+
+
+    for (i = 0; i < 79 ; i++)
+
+    {
+
+      for(j = 0; j < 23 ; j ++)
+
+      {
+
+        tabAff[i][j] = tabSave[i-1][j];
+
+      }
+
+    }
+
+
+
+    for(j = 0; j < 22 ; j ++)
+
+    {
+
+      tabAff[0][j] = tabSave[79][j];
+
+
+
+    }
+
+
+
+
+//a droite
+
+ if (a == +1)
+
+  {
+
+    for (i = 0; i < 79 ; i++)
+
+    {
+
+      for(j = 0; j < 23 ; j ++)
+                                                                        
+
+        tabSave[i][j] = tabAff[i][j];
+
+      }
+
+    }
+
+
+
+    for (i = 0; i < 79 ; i++)
+
+    {
+
+      for(j = 0; j < 23 ; j ++)
+
+      {
+
+        tabAff[i][j] = tabSave[i+1][j];
+
+      }
+
+    }
+
+
+
+    for(j = 0; j < 22 ; j ++)
+
+    {
+
+      tabAff[0][j] = tabSave[79][j];
+
+
+
+    }
