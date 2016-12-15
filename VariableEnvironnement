@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <string.h>
+
+
+int main(int argc, char *argv[])
+{
+int pid;
+
+pid= fork();
+
+char *path; //declare le chemin 
+
+switch(pid)
+	{
+	case-1:
+	printf("erreur");
+	break;
+
+	case 0:
+	path = getenv("EXIASAVER2_SLEEP"); //chemin = a la variable d'environnement | chemin = /home/utilisateur/Documents/Projet/EXIASAVER2_SLEEP
+	
+	strcat(path,"/programme"); //Fonction qui permet d'afficher deux listes de caractere a la suite
+                             // path+repertoire anthony ce qui donne : /home/utilisateur/Documents/Projet/EXIASAVER2_SLEEP/anthony
+
+	execl(path,"programme",NULL);  // execute leprogramme grace au chemin d'acces
+	break;
+
+	default:
+	wait(NULL);
+	break;
+	}
+return 0;
+}
