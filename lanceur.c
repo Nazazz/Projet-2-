@@ -16,27 +16,27 @@ int afficheMenu();
 int main(int argc, char *argv[])
 
 {
-  char stat[] = "-stat"; // declare la chaine de caractere -stat pour comparer a l argument entrer
-  int randomChiffre;
-  int type;
-  int type2;
-  char date[]= "JJ/MM/AAAA" ;
-  char heure[]= "HH:MM:SS" ;
-  int i = 0;
+  char stat[] = "-stat";      // declare la chaine de caractere -stat pour comparer a l argument entrer
+  int randomChiffre;          //declare la variable randomChiffre
+  int type;                   //declare la variable type
+  int type2;                  //declare la variable type2
+  char date[]= "JJ/MM/AAAA" ;  //declare la chaîne de caractère pour la date
+  char heure[]= "HH:MM:SS" ;   // declare la chaîne de caractère pour l'heure
+  int i = 0;                   //initialisation de la variable i à 0
   char caractereActuel = 'a';
   int pid;
 
 
-  srand(time(NULL)); //srand permet de donner des valeurs aléatoires
-  int randomImage ;
-  randomImage = rand()%5+1;
+  srand(time(NULL));           //srand permet de donner des valeurs aléatoires
+  int randomImage ;            //declare la variable randomImage  
+  randomImage = rand()%5+1;    //execute un random entre 1 et 5 
 
-  srand(time(NULL)); //srand permet de donner des valeurs aléatoires
-  int randomSens ;
-  randomSens = rand()%4+1;
+  srand(time(NULL));           //srand permet de donner des valeurs aléatoires
+  int randomSens ;             //declare la variable randomSens
+  randomSens = rand()%4+1;     //execute une random entre 1 et 4
 
 
-  time_t now = time(NULL); //permet de lire l'heure courante
+  time_t now = time(NULL);     //permet de lire l'heure courante
   struct tm tm_now = *localtime(&now);//permet de convertir l'heure en heure locale grâce a localtime
   char s_now[sizeof "JJ/MM/AAAA HH:MM:SS"];// crée une chaine pour savoir comment cela va s'afficher sur le terminal
   strftime (s_now, sizeof s_now, "%d/%m/%Y %H:%M:%S", &tm_now);
@@ -46,17 +46,15 @@ int main(int argc, char *argv[])
 
 
 
-int randomType;
-
-randomChiffre = 1;
+int randomType;         
 
 
-if (randomChiffre == 1)
+if (randomChiffre == 1) //si la variable randomChiffre est égal à 1
 {
-  randomType = randomImage;
+  randomType = randomImage;  
 
 }
-if (randomChiffre == 3)
+if (randomChiffre == 3) //si la variable randomChiffre est égal à 3
 {
   randomType = randomSens;
 }
@@ -131,7 +129,7 @@ switch(pid)
 
        if (randomChiffre == 3)
        {
-         pid = fork();
+         pid = fork();   //utilisation du fork
 
      switch(pid)
 
@@ -332,10 +330,10 @@ int randomVeille()
     return nombre;
 
 }
-
+//Menu du lanceur
 int afficheMenu()
 {
-  int ChoixMenu;
+  int ChoixMenu;      
 
   printf("------MENU------\n\n");
   printf("1.STATIQUE\n");
