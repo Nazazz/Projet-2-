@@ -50,6 +50,7 @@ int randomType;
 
 randomChiffre = 1;
 
+
 if (randomChiffre == 1)
 {
   randomType = randomImage;
