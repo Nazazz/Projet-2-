@@ -5,7 +5,7 @@
 #include <unistd.h>
 
 
-void inserTabPbm (FILE* image, int taby, int tabx ,int InfoImage[24][80])
+void inserTabPbm (FILE* image, int taby, int tabx ,int InfoImage[24][80]) // permet de lire dans le fichier l image et d inserrer les valeurs dans un tableau
 
 {
 
@@ -23,7 +23,7 @@ void inserTabPbm (FILE* image, int taby, int tabx ,int InfoImage[24][80])
 
      if (image != NULL)
       {
-        while (i <=2)
+        while (i <=2) // se place a la deuxieme ligne 
         {
           while (caractereActuel != '\n')
           {
@@ -35,7 +35,7 @@ void inserTabPbm (FILE* image, int taby, int tabx ,int InfoImage[24][80])
         }
      }
 
-  fseek(image, 1, SEEK_CUR);
+  fseek(image, 1, SEEK_CUR); // deplace le cursseur d un caractere 
 
   int y;
   int x;
@@ -55,7 +55,7 @@ void inserTabPbm (FILE* image, int taby, int tabx ,int InfoImage[24][80])
   if (image != NULL)
   {
 
-        for (i = 0; i < taby ; i++)
+        for (i = 0; i < taby ; i++) // lit les donnes binaire de l image et les insert dans un tableau 
         {
             for(j = 0; j < tabx; j++)
             {
