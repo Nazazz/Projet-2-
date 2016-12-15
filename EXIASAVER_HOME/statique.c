@@ -8,8 +8,8 @@
 
 
 
-int calcCentrex(int tabx );
-int calcCentrey(int taby );
+int calcCentrex(int tabx);
+int calcCentrey(int taby);
 
 
 int main(int argc, char *argv[])
@@ -63,13 +63,20 @@ int main(int argc, char *argv[])
 
 
 
-i = 0;
+
+
 
     tabx = tailleImageX(image);
     taby = tailleImageY(image);
 
-/*
-    if (image != NULL)
+
+
+    fseek(image, 0, SEEK_SET);
+
+
+i = 0;
+
+   if (image != NULL)
     {
       while (i <=2)
       {
@@ -81,9 +88,11 @@ i = 0;
         i++;
 
       }
-    }
-*/
-    int InfoImage[taby][tabx];
+   }
+
+fseek(image, 1, SEEK_CUR);
+
+    int InfoImage[taby][tabx] ;
 
 
       i = 0;
@@ -127,6 +136,11 @@ if (image != NULL)
       }
 
   }
+
+
+  //int **InfoImage;
+
+  //InfoImage = inserTabPbm (image, tabx, taby);
 
       fclose(image);
 
@@ -187,28 +201,4 @@ if (image != NULL)
 
 
 
-}
-
-
-
-int calcCentrex(int tabx)
-
-{
-  int calcx ;
-  calcx = 80 - tabx ;
-  calcx = calcx / 2 ;
-
-
-  return calcx;
-}
-
-
-int calcCentrey(int taby)
-
-{
-  int calcy ;
-  calcy = 24 - taby ;
-  calcy = calcy / 2 ;
-
-  return calcy;
 }
