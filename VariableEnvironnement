@@ -34,3 +34,10 @@ switch(pid)
 	}
 return 0;
 }
+
+
+//variable d environement :
+//export EXIASAVER_HOME=/home/afix/Documents/projet_2/EXIASAVER_HOME
+//export EXIASAVER1_PBM=/home/afix/Documents/projet_2/EXIASAVER1_PBM
+//export EXIASAVER3_PBM=/home/afix/Documents/projet_2/EXIASAVER3_PBM
+
