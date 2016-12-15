@@ -141,7 +141,7 @@ else
 
 save = oc;
 
-printf("%s\n",orien[oc] );
+
 
 
     image = fopen(orien[oc] , "r");
@@ -230,9 +230,6 @@ j = 0;
 
 
 
-printf("calcx %d\n",calcx );
-printf("calcy %d\n",calcy );
-
 k = calcy;
 l = calcx;
 
@@ -253,11 +250,68 @@ for (i = 0  ; i < taby  ; i++ )
       j = 0;
 
 
+printf("savey : %d\n",savey );
+printf("savex : %d\n", savex);
+printf("a : %d\n", a);
+printf("b : %d\n", b);
 
-DecPoint(savey , savex, a , b, tabAff);
+
+
+int ligne ;
+int col;
+
+ligne = savey;
+col = savex;
+
+i = ligne ;
+j = col;
+
+
+if (ligne << 0)
+{
+  while(i != 0)
+  {
+    i++;
+    decaler(-1,0,tabAff);
+
+  }
+
+}
+
+else if (ligne >> 0)
+{
+  while(i != 0)
+  {
+    i--;
+    decaler(1,0,tabAff);
+  }
+}
+
+else if (col << 0)
+{
+  while(j != 0)
+  {
+    i++;
+    decaler(0,-1,tabAff);
+  }
+}
+
+else if (col >> 0)
+{
+  while(j != 0)
+  {
+    i--;
+    decaler(0,1,tabAff);
+  }
+}
 
 
 
+//DecPoint(savey , savex, a , b, tabAff);
+
+
+i = 0 ;
+j = 0 ;
 
 
 

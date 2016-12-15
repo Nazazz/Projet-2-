@@ -192,33 +192,39 @@ void decaler(int a, int b , int tabAff[23][80])
 
   int i =0;
   int j =0;
-  int tabTmpI[80] ={0};
   int tabSave[24][80];
-/*
+
   if (a == 1)
   {
-    for (i = 0; i < 80 ; i++)
-    {
-      tabTmpI[i] = tabAff[0][i];
-    }
-    i =0;
-    j =0;
-    for (j = 1; j < 80 ; j++)
+    for (j = 0; j < 22 ; j++)
     {
       for(i = 0; i < 80 ; i ++)
       {
-        tabAff[j+1][i] = tabAff[j][i];
+        tabSave[j][i] = tabAff[j][i];
       }
     }
-    i =0;
-    j =0;
-    for ( i = 0 ; i < 80 ; i++)
+
+    for (j = 0; j < 22 ; j++)
     {
-      tabAff[23][i] = tabTmpI[i];
+      for(i = 0; i < 80 ; i ++)
+      {
+        tabAff[j][i] = tabSave[j+1][i];
+      }
+    }
+
+    for(i = 0; i < 80 ; i ++)
+    {
+      tabAff[0][i] = tabSave[22][i];
+
     }
 
   }
-*/
+
+
+
+
+
+
   if (a == -1)
   {
     for (j = 0; j < 22 ; j++)
@@ -239,16 +245,19 @@ void decaler(int a, int b , int tabAff[23][80])
 
     for(i = 0; i < 80 ; i ++)
     {
-      tabAff[22][i] = tabSave[0][i];
+      tabAff[0][i] = tabSave[21][i];
+
     }
 
 
   }
 
-  if (b == 1)
-  {
-    tabAff[1][1] = 1;
-  }
+
+
+
+
+
+/*
 
   if (b == -1)
   {
@@ -278,7 +287,6 @@ void decaler(int a, int b , int tabAff[23][80])
     }
   }
 
-/*
 
   if (b == 1);
   {
@@ -298,6 +306,8 @@ void decaler(int a, int b , int tabAff[23][80])
       }
     }
   }
+
+
   if (b == -1);
   {
     for (i = 0; i < 22; i++)
@@ -318,6 +328,7 @@ void decaler(int a, int b , int tabAff[23][80])
 
   }
 */
+
 }
 
 void DecPoint(int ligne , int col, int a , int b, int tabAff[23][80])
@@ -330,16 +341,17 @@ i = ligne ;
 j = col;
 
 
-if (ligne < 0)
+if (ligne << 0)
 {
   while(i != 0)
   {
     i++;
     decaler(-1,0,tabAff);
   }
+
 }
 
-if (ligne > 0)
+else if (ligne >> 0)
 {
   while(i != 0)
   {
@@ -348,7 +360,7 @@ if (ligne > 0)
   }
 }
 
-if (col < 0)
+else if (col << 0)
 {
   while(j != 0)
   {
@@ -357,7 +369,7 @@ if (col < 0)
   }
 }
 
-if (col > 0)
+else if (col >> 0)
 {
   while(j != 0)
   {
@@ -367,6 +379,5 @@ if (col > 0)
 }
 
 
-
-
+return ;
 }
