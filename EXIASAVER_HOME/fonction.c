@@ -11,9 +11,9 @@ int tailleImageX(FILE* image)
   int tabx;
   int taby;
 
-  fseek(image, 0, SEEK_SET);
+  fseek(image, 0, SEEK_SET); //place le curseur au début du fichier
 
-  if (image != NULL)
+  if (image != NULL)      
   {
     while (i <=2)
     {
@@ -26,7 +26,7 @@ int tailleImageX(FILE* image)
 
       if (i == 1)
       {
-        fscanf(image, "%d %d ", &taby, &tabx);
+        fscanf(image, "%d %d ", &taby, &tabx); //lit la taille x et y des images 
         i++;
       }
     }
